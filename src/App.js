@@ -15,12 +15,12 @@ const App = () => {
 
     const login = useCallback(uid => {
         setIsLoggedInState(true);
-      setUserId(uid);
+        setUserId(uid);
     }, []);
   
     const logout = useCallback(() => {
         setIsLoggedInState(false);
-      setUserId(null);
+        setUserId(null);
     }, []);
 
     let routes;
