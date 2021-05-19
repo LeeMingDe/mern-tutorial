@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 
@@ -59,7 +61,7 @@ const createPlace = async (req, res, next) => {
         description,
         address,
         location: coordinates,
-        image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+        image: req.file.path,
         creator
     });
 
@@ -132,6 +134,8 @@ const deletePlace = async (req, res, next) => {
         return next(error);
     }
 
+    const imagePath = place.image;
+
     try {
         const sess = await mongoose.startSession();
         sess.startTransaction();
@@ -142,6 +146,10 @@ const deletePlace = async (req, res, next) => {
     } catch (err) {
         return next(new HttpError("Something went wrong, could not delete place", 500));
     }
+
+    fs.unlink(imagePath, err => {
+        console.log(err);
+    });
     
     res.status(200).json({ message: 'Deleted place.' });
 };

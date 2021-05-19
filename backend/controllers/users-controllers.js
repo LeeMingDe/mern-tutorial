@@ -35,7 +35,7 @@ const signup = async (req, res, next) => {
     const createdUser = new User({
         name,
         email,
-        image: 'https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png',
+        image: req.file.path,
         password,
         places: []
     });
