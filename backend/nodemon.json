@@ -1,0 +1,9 @@
+{
+    "env": {
+        "DB_USER": "mingde",
+        "DB_PASSWORD": "Singapore1",
+        "DB_NAME": "places",
+        "GOOGLE_API_KEY": "AIzaSyAG1IQ1IBzDHsry0V9qO4LUG50Z4HYVS70",
+        "JWT_KEY": "privatekey"
+    }
+}
